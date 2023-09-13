@@ -1,0 +1,5 @@
+name: API task
+core_version_requirement: ^10
+type: module
+description: 'It will perform the API task.'
+package: custom

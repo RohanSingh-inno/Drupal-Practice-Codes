@@ -1,0 +1,5 @@
+name: Register with OTP
+type: module
+core_version_requirement: ^10
+package: custom
+description: 'This will modify the register form.'

@@ -1,0 +1,11 @@
+database_event.quarterEventCount:
+  title: Dashboard
+  parent: system.admin
+  route_name: database_event.quarterEventCount
+  weight: 9
+
+database_event.settings:
+  title: 'Taxonomy Term Search'
+  parent: system.admin_config_system
+  route_name: database_event.settings
+  weight: 2

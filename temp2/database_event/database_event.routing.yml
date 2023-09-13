@@ -1,0 +1,15 @@
+database_event.quarterEventCount:
+  path: '/dashboard'
+  defaults:
+    _controller: '\Drupal\database_event\Controller\EventController::show'
+  requirements:
+    _permission: 'access content'
+
+database_event.settings:
+  path: '/admin/config/system/settings'
+  defaults:
+    _title: 'Taxonomy Search'
+    _form: 'Drupal\database_event\Form\SettingsForm'
+  requirements:
+    _permission: 'access content'
+

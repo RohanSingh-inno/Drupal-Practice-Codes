@@ -1,0 +1,7 @@
+product_page.thnkuPage:  
+  path: '/thank-you'
+  defaults:
+    _controller: '\Drupal\product_page\Controller\taskController::thnkuPage'
+  requirements:
+    _permission: 'access content'
+

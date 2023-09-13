@@ -1,0 +1,5 @@
+name: Home Page Task
+core_version_requirement: ^10
+type: module
+package: custom
+description: 'This is the module created to create blocks which will be displayed on homepage'

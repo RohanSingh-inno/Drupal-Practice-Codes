@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ */
+function student_task_cron() {
+  
+  $six_month_back = strtotime('-6 months');
+
+  $query = Drupal::entityTypeManager()->getStorage('user')
+    ->getQuery()
+    ->condition('roles','student')
+    ->accessCheck(TRUE);
+  
+  $student_uid = $query->execute();
+  if(!empty($student_uid)){
+    $user_info = Drupal::entityTypeManager()->getStorage('user');
+    foreach ($student_uid as $student_uid) {
+      $user = $user_info->load($student_uid);
+      $passing_date = $user->get('field_passing_year')->value;
+      $passing_val = strtotime($passing_date);
+      if($passing_val < $six_month_back){
+        $user->delete();
+        \Drupal::logger('student_task')->notice('Deleted user with ID: @uid', ['@uid' => $student_uid]);
+      }else {
+        \Drupal::logger('student_task')->notice('Did not delete user with ID: @uid. Passing year: @passing, Six months back: @sixmonths', [
+          '@uid' => $student_uid,
+          '@passing' => date('Y-m-d', $passing_val),
+          '@sixmonths' => date('Y-m-d', $six_month_back),
+        ]);
+      }
+    }
+  }else{
+    \Drupal::logger('cron_module')->notice('Empty');
+  }
+
+}

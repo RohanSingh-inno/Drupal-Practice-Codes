@@ -1,0 +1,12 @@
+product_page.click:
+  version: 1.x
+  css:
+    theme:
+      css/style.css: {}
+  js:
+    js/text.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
+    

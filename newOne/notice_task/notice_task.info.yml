@@ -1,0 +1,4 @@
+name: Notice Task
+core_version_requirement: ^10
+type: module
+package: custom

@@ -1,0 +1,14 @@
+# node.type.event.yml
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - database_event #This is the name of the module we are using for this example
+name: 'Event'
+type: event_details      
+description: 'New content type as per the ticket FT2023-350'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

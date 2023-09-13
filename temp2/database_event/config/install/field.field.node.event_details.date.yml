@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.date
+    - node.type.event_details
+  module:
+    - datetime
+id: node.event_details.date
+field_name: date
+entity_type: node
+bundle: event_details
+label: 'Event Date'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

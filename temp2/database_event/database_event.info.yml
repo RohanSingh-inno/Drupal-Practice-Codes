@@ -1,0 +1,5 @@
+name: Database Event
+type: module
+description: 'This is the module for FT2023-350'
+package: Custom
+core_version_requirement: ^10

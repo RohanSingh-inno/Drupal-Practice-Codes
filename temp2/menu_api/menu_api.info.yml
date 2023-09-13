@@ -1,0 +1,5 @@
+name: Menu API
+type: module
+core_version_requirement: ^10
+package: Custom
+description: 'Custom module for Drupal ticket FT2023-347'

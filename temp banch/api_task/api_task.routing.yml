@@ -1,0 +1,8 @@
+api_task.product_listing:
+  path: '/get/products'
+  defaults:
+    _controller: '\Drupal\api_task\Controller\GetProducts::getProduct'
+    _format: json
+  methods: [GET]
+  requirements:
+    _access: 'TRUE'

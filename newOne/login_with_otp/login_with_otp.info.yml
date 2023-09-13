@@ -1,0 +1,5 @@
+name: Login with OTP
+type: module
+description: This module will be used for OTP verification using session.
+package: custom
+core_version_requirement: ^10

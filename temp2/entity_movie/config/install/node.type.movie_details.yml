@@ -1,0 +1,14 @@
+# node.type.movie.yml
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - entity_movie #This is the name of the module we are using for this example
+name: 'Movie'
+type: movie_details      
+description: 'New content type as per the ticket FT2023-346'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

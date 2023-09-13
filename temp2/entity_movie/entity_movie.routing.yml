@@ -1,0 +1,31 @@
+entity.entity_movie.collection:
+  path: '/admin/structure/entity-movie'
+  defaults:
+    _entity_list: 'entity_movie'
+    _title: 'Entity movie configuration'
+  requirements:
+    _permission: 'administer entity_movie'
+
+entity.entity_movie.add_form:
+  path: '/admin/structure/entity_movie/add'
+  defaults:
+    _entity_form: 'entity_movie.add'
+    _title: 'Add an entity movie'
+  requirements:
+    _permission: 'administer entity_movie'
+
+entity.entity_movie.edit_form:
+  path: '/admin/structure/entity-movie/{entity_movie}'
+  defaults:
+    _entity_form: 'entity_movie.edit'
+    _title: 'Edit an entity movie'
+  requirements:
+    _permission: 'administer entity_movie'
+
+entity.entity_movie.delete_form:
+  path: '/admin/structure/entity-movie/{entity_movie}/delete'
+  defaults:
+    _entity_form: 'entity_movie.delete'
+    _title: 'Delete an entity movie'
+  requirements:
+    _permission: 'administer entity_movie'

@@ -1,0 +1,7 @@
+# register_with_otp.validate_otp:
+#   path: '/user/register/validate-otp'
+#   defaults:
+#     _title: 'OTP'
+#     _form: 'Drupal\register_with_otp\Form\RegisForm'
+#   requirements:
+#     _permission: 'access content'

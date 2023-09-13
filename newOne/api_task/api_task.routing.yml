@@ -1,0 +1,16 @@
+api_task.students_list:
+  path: '/api/students'
+  defaults:
+    _controller: '\Drupal\api_task\Controller\StudentApiController::listStudents'
+    _format: json
+  methods: [GET]
+  requirements:
+    _access: 'TRUE'
+  options:
+    parameters:
+      stream:
+        type: string
+        description: 'Filter students by stream.'
+      joining_year:
+        type: date
+        description: 'Filter students by joining year.'  

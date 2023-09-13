@@ -1,0 +1,7 @@
+javascript_api.page:
+  path: '/page'
+  defaults:
+    _controller: 'Drupal\javascript_api\Controller\JsController::page'
+    _title: 'Custom module'
+  requirements:
+    _permission: 'access content' 

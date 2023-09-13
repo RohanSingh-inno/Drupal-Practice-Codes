@@ -1,0 +1,9 @@
+javascript_api.page:
+  title: 'Introduction'
+  description: 'This is the work for ticket FT2023-352.'
+  route_name: javascript_api.page
+  weight: 100
+  menu_name: 'main'
+  options:
+    attributes:
+      target: '_blank'

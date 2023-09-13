@@ -1,0 +1,25 @@
+# field.field.node.movie_details.image.yml
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.image
+    - node.type.movie_details
+id: node.movie_details.image
+field_name: image
+entity_type: node
+bundle: movie_details
+label: Movie Image
+description: "Price of the movie ticket."
+required: true
+translatable: true
+default_value: { }
+default_value_callback: ""
+settings:
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: '10MB'
+  max_resolution: '1920x1080'
+  alt_field: true
+  title_field: true
+field_type: image

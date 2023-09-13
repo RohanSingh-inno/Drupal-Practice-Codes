@@ -1,0 +1,5 @@
+name: Movie Entity
+type: module
+description: 'This is the module for FT2023-346'
+package: Custom
+core_version_requirement: ^10

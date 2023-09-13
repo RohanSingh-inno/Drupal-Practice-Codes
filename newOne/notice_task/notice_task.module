@@ -1,0 +1,29 @@
+<?php 
+
+/**
+ * Implemented hook_cron().
+ */
+function notice_task_cron(){
+
+    $current_date = Drupal::time()->getCurrentTime();
+    $query = Drupal::entityTypeManager()->getStorage('node')
+            ->getQuery()
+            ->condition('type' ,'notice')
+            ->accessCheck(TRUE);
+    
+    $notice_id = $query->execute();
+
+    if(!empty($notice_id)){
+        $notice_storage = Drupal::entityTypeManager()->getStorage('node');
+        foreach ($notice_id as $notice_id) {
+            $notice_details = $notice_storage->load($notice_id);
+            $event_date = $notice_details->get('field_event__date')->value;
+            $event_date_value = strtotime($event_date);
+            if($event_date_value < $current_date){
+                $notice_details->delete();
+                \Drupal::logger('notice_task')->notice('Deleted Back Date Notice');
+            }
+
+        }
+    }
+}

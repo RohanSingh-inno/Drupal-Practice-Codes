@@ -1,0 +1,6 @@
+name: Product Page
+core_version_requirement: ^10
+type: module
+package: custom
+description: 'This will add all the functionalities on the product page.'
+

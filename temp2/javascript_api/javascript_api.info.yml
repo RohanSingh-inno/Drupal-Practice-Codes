@@ -1,0 +1,8 @@
+name: Javascript API
+type: module
+description: 'Custom module for Drupal ticket FT2023-352'
+package: Custom
+core_version_requirement: ^10
+libraries:
+  - javascript_api/custom-style
+  

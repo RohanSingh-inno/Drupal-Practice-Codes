@@ -1,0 +1,129 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter(). 
+ */
+function register_with_otp_form_alter(&$form, FormStateInterface $form_state, $form_id, $uid = NULL) {
+   if ($form_id == 'user_register_form') {
+      // dd($form);
+      $form['otp'] = [
+         '#type' => 'textfield',
+         '#title' => t('Enter OTP'),
+         '#required' => true,
+         '#weight' => 12,
+       ];
+
+      $form['actions']['send_email'] = [
+         '#type' => 'button',
+         '#value' => t('Send Email'),
+         '#ajax' => [
+           'callback' => 'register_with_otp_submit_handler',
+           'event' => 'click',
+         ],
+       ];
+   }
+}
+
+function validate_otp_handler(&$form , FormStateInterface $form_state,$otp){
+   if($otp != $form_state->get('otp')){
+      return FALSE;
+   }
+   return TRUE;
+}
+
+function register_with_otp_submit_handler(&$form , FormStateInterface $form_state) {
+   $email = $form_state->getValue('mail');
+   $password = $form_state->getValue('pass-pass1');
+   $con_Password = $form_state->getValue('pass-pass2');
+   if($password == $con_Password){
+      $otp = rand(1000,9999);
+      if(register_with_otp_send_otp($email, $otp)){
+         if(!validate_otp_handler( $form,$form_state,$otp)){
+            $form_state->setErrorByName('otp', t('Invalid OTP'));
+         }
+      }else{
+         $form_state->setErrorByName('otp', t('Error sending OTP!!'));
+      }   
+   }
+   else{
+      $form_state->setErrorByName('password', t('Password not match!!'));
+   }
+}
+
+function register_with_otp_send_otp($email,$otp) {
+   $message = "Your OTP for Registration is :\n";
+   $message .= $otp;
+   $params['message'] = $message;
+   $admin_email = \Drupal::config('system.site')->get('mail');
+   $mailManager = \Drupal::service('plugin.manager.mail');
+   $module = 'register_with_otp';
+   $key = 'user_register_otp';
+   $to = $email;
+   $langcode = \Drupal::currentUser()->getPreferredLangcode();
+   $send = TRUE;
+   $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+ }
+ 
+ function register_with_otp_mail($key, &$message , $params) {
+   $options = [
+     'langcode' => $message['langcode'],
+   ];
+   switch ($key) {
+     case 'user_register_otp':
+       $message['from'] = \Drupal::config('system.site')->get('mail');
+       $message['subject'] = t('OTP for user login');
+       $message['body'][] = $params['message'];
+       break;
+   }
+ }
+
+
+//  use Drupal\Core\Ajax\AjaxResponse;
+//  use Drupal\Core\Ajax\HtmlCommand;
+//  use Drupal\Core\Form\FormStateInterface;
+ 
+//  /**
+//   * Implements hook_form_alter().
+//   */
+//  function your_module_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+//    if ($form_id === 'user_register_form') {
+//      // Add your custom submit handler.
+//      $form['actions']['send_email'] = [
+//        '#type' => 'button',
+//        '#value' => t('Send Email'),
+//        '#ajax' => [
+//          'callback' => 'your_module_send_email_ajax_callback',
+//          'event' => 'click',
+//        ],
+//      ];
+//    }
+//  }
+ 
+//  /**
+//   * AJAX callback to send email.
+//   */
+//  function your_module_send_email_ajax_callback(array &$form, FormStateInterface $form_state) {
+//    // Implement your email sending logic.
+//    send_email_function();
+ 
+//    // Return the response.
+//    $response = new AjaxResponse();
+//    $response->addCommand(new HtmlCommand('.messages', 'Email sent successfully.'));
+//    return $response;
+//  }
+ 
+//  /**
+//   * Helper function to send email.
+//   */
+//  function send_email_function() {
+//    // Implement your email sending logic here.
+//    $email = 'recipient@example.com';
+//    $subject = 'Test Email';
+//    $message = 'This is a test email sent using AJAX.';
+//    mail($email, $subject, $message);
+//  }
+ 
+?>
+

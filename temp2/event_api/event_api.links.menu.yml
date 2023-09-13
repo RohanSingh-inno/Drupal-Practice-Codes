@@ -1,0 +1,5 @@
+event_api.movie:
+  title: Budget
+  parent: system.admin
+  route_name: event_api.movie
+  weight: 9

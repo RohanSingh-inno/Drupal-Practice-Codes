@@ -1,0 +1,6 @@
+name: Blocks Module
+description: 'This is a custom module created for FT2023-343'
+type: module
+version: 1.0
+package: Custom
+core_version_requirement: ^9 | ^10

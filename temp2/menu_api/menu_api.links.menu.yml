@@ -1,0 +1,5 @@
+menu_api.movie:
+  title: Budget
+  parent: system.admin
+  route_name: menu_api.movie
+  weight: 9

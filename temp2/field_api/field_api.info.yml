@@ -1,0 +1,6 @@
+name: Field API
+type: module
+core_version_requirement: ^10
+description: 'This is a custom module regarding Field API'
+package: Custom
+version: '1.0' 

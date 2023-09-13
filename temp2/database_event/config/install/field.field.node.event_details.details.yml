@@ -1,0 +1,22 @@
+# field.field.node.movie_details.details.yml
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.details
+    - node.type.event_details
+  module:
+    - text
+id: node.event_details.details
+field_name: details
+entity_type: node
+bundle: event_details
+label: Details
+description: "More details about the event."
+required: false
+translatable: true
+default_value: {}
+default_value_callback: ""
+settings:
+  display_summary: true
+field_type: text_with_summary

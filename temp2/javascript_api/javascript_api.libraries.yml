@@ -1,0 +1,10 @@
+custom-style:
+  version: 1.0
+  css:
+    theme:
+      css/style.css: {}
+  js:
+    js/first.js: {}   
+  dependencies:
+    - core/jquery
+
